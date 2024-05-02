@@ -1,11 +1,16 @@
 import { allPosts } from "contentlayer/generated";
 import { useMDXComponent } from "next-contentlayer/hooks";
+import { notFound } from "next/navigation";
 
 interface Props {
   params: {
     slug: string;
   };
 }
+
+export const generateStaticParams = () => {
+  return allPosts.map((post) => ({ slug: post._raw.flattenedPath }));
+};
 
 export const generateMetadata = ({ params }: Props) => {
   const post = allPosts.find((p) => p._raw.flattenedPath === params.slug);
@@ -22,7 +27,7 @@ const LayoutPosts = ({ params }: Props) => {
   let MDXContent;
 
   if (!post) {
-    return <h1>Post Not Found</h1>;
+    return notFound();
   } else {
     MDXContent = useMDXComponent(post.body.code);
   }
