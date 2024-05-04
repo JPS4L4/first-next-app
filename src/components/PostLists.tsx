@@ -8,9 +8,15 @@ interface Props {
 const PostLists = ({ posts }: Props) => {
   return (
     <>
-      {posts.map((post) => (
-        <PostItem key={post._raw.flattenedPath} post={post} />
-      ))}
+      {Array.isArray(posts) ? (
+        posts.map((post) => (
+          <PostItem key={post._raw.flattenedPath} post={post} />
+        ))
+      ) : (
+        <>
+          <h4>Error al cargar Items!</h4>
+        </>
+      )}
     </>
   );
 };

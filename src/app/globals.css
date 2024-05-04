@@ -6,6 +6,10 @@ h2 {
   @apply text-center text-indigo-500 my-4;
 }
 
+h4 {
+  @apply text-center text-red-600 my-4 text-2xl;
+}
+
 p {
   @apply text-gray-800 my-4 p-2;
 }
