@@ -1,3 +1,4 @@
+import ButtonBack from "@/components/ButtonBack";
 import { allPosts } from "contentlayer/generated";
 import { useMDXComponent } from "next-contentlayer/hooks";
 import { notFound } from "next/navigation";
@@ -33,17 +34,24 @@ const LayoutPosts = ({ params }: Props) => {
   }
 
   return (
-    <div>
-      <h1 className="text-center my-4 text-3xl">{post.title}</h1>
-      <time>
+    <>
+    <h1 className="text-center text-2xl font-bold uppercase">{post.title}</h1>
+    <div className="mb-8 text-center">
+      <time className="text-gray-700">
         {new Date(post.date).toLocaleDateString("es-ES", {
           year: "numeric",
           month: "long",
           day: "numeric",
         })}
       </time>
-      <MDXContent />
     </div>
+
+    <MDXContent />
+
+    <div className="mt-8 text-center">
+      <ButtonBack>Volver</ButtonBack>
+    </div>
+  </>
   );
 };
 

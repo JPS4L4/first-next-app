@@ -16,7 +16,7 @@ const PostPagination = ({ totalPages, currentPage = 1 }: Props) => {
             : "text-blue-700"
         }`}
       >
-        preview
+        Prev
       </Link>
       {Array.from({ length: totalPages }).map((_, index) => (
         <button disabled={currentPage === index + 1}>
@@ -41,7 +41,7 @@ const PostPagination = ({ totalPages, currentPage = 1 }: Props) => {
             : "text-blue-700"
         }`}
       >
-        next
+        Next
       </Link>
     </div>
   );
